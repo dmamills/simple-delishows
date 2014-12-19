@@ -15,7 +15,6 @@
 		} 
 
 	       var d = Date.parse(result.air_date);
-console.log(d);
 		   if(d) result.air_date = d.toString('MM/dd/yyyy');
 
 	   return result;
@@ -35,17 +34,27 @@ console.log(d);
 		return titles;
 	}
 
+	function padNum(n) {
+		n = parseInt(n,10);
+		return (n>9) ? n : '0' + n;
+	}
+
+	function shortenEpisodeNum(str) {
+		var r = /^\s+/g;
+		var a = str.replace(r,'').split(' ');
+		return 'S'+padNum(a[1])+'E'+padNum(a[3]);
+	}
+
 	//converts the titles into the new style
 	function convertToNewStyle(titles) {
 		var els = [];
 		forEach.call(titles,function(title) {
-
 			var rootEl = document.createElement('tr');
 			rootEl.onclick = function() { window.location = title.url;}
 			rootEl.className = 'title-listing';
 			rootEl.innerHTML = '<td><strong>'+title.show_name + '</strong></td>' +
 							   '<td>' + title.air_date + '</td>' +
-							   '<td>' + title.episode_num + ' - ' +title.episode_name +  '</td>';
+							   '<td><span class="episode-num">' + shortenEpisodeNum(title.episode_num) + '</span> - ' +title.episode_name +  '</td>';
 
 			els.push(rootEl);
 		});
@@ -57,11 +66,11 @@ console.log(d);
 	function insertToDom(els) {
 		var s = document.getElementsByTagName('section')[0];
 		var p = document.getElementsByClassName('pagination')[0];
-		s.innerHTML = '<h3>New Shows</h3><hr>';
+		s.innerHTML = '<h4>Latest Updates</h4><hr>';
 
 		var tEl = document.createElement('table');
 		tEl.className = "table title-table table-bordered";
-		tEl.innerHTML = '<tr><th>Show</th><th>Air Date</th><th>Episode Name</th></tr>';
+		tEl.innerHTML = '<tr><th>Show</th><th>Air Date</th><th>Episode</th></tr>';
 		
 		forEach.call(els,function(el){
 			tEl.children[0].appendChild(el);
@@ -72,10 +81,10 @@ console.log(d);
 	};
 
 
+	var s = document.getElementsByTagName('section')[0];
+	s.hidden = true;
 	insertToDom(convertToNewStyle(createTitles()));
-	//var titles = createTitles();
-	//var els = convertToNewStyle(titles);
-	//insertToDom(els);
+	s.hidden = false;
 	console.log('simple-deli-shows executed');
 
 }).call(this);

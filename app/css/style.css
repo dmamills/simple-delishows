@@ -1,12 +1,15 @@
 .title-table tr:nth-child(1) {
-	background-color:#F9F9F9;
+	background-color:#2196f3;
+	color:#ffffff;
+	border: 1px solid #2196f3;
 }
 
-.title-listing:nth-child(even) {
-
+.title-listing td:nth-child(1) {
+	background-color:rgba(218, 223, 225, 0.5);
 }
-.title-listing:nth-child(odd) {
 
+.episode-num {
+	font-weight:500;
 }
 
 .title-listing:hover {

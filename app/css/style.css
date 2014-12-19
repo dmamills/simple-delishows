@@ -1,0 +1,16 @@
+.title-table tr:nth-child(1) {
+	background-color:#F9F9F9;
+}
+
+.title-listing:nth-child(even) {
+
+}
+.title-listing:nth-child(odd) {
+
+}
+
+.title-listing:hover {
+	background-color:#DDDDDD !important;
+	color:#000000;
+	cursor:pointer;
+}

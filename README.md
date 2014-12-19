@@ -2,7 +2,7 @@
 
 ### what?
 
-I like to use [delishows](http://delishows.to) but I hate their new layout. This chrome extension simplifies it up, so I can ~~not~~ illegally watch TV shows quicker.
+I like to use [delishows](http://delishows.to) but I hate their new layout. This chrome extension simplifies it up, so I can _not_ illegally watch TV shows quicker.
 
 This was made using [this](https://github.com/yeoman/generator-chrome-extension) yeoman generator.
 
